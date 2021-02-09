@@ -1,4 +1,8 @@
+import { useContext } from "react";
+
 import styled from "styled-components";
+
+import { GlobalContext } from "../context/GlobalState";
 
 import IncomeImg from "../assets/images/income.svg";
 import ExpenseImg from "../assets/images/expense.svg";
@@ -34,35 +38,56 @@ const Card = styled.div`
     margin-top: 1rem;
   }
 
+  p.money.plus {
+    color: #2ecc71;
+  }
+
+  p.money.minus {
+    color: #c0392b;
+  }
+
   &:last-child {
     background: #49aa26;
     color: #fff;
   }
 `;
 
-const HTML = ({ value, Img, amount }) => {
-  return (
-    <>
-      <h3>
-        <span>{value}</span>
-        <img src={Img} alt="Income" />
-      </h3>
-      <p>{amount}</p>
-    </>
-  );
-};
-
 export const Balance = () => {
+  const { transactions } = useContext(GlobalContext);
+
+  const amounts = transactions.map((transaction) => transaction.amount);
+  const total = amounts.reduce((acc, item) => (acc += item), 0);
+
+  const income = amounts
+    .filter((item) => item > 0)
+    .reduce((acc, item) => (acc += item), 0);
+
+  const expense = amounts
+    .filter((item) => item < 0)
+    .reduce((acc, item) => (acc += item), 0);
+
   return (
     <BalanceContainer className="balance">
       <Card>
-        <HTML value={"Income"} Img={IncomeImg} amount={0} />
+        <h3>
+          <span>Income</span>
+          <img src={IncomeImg} alt="Income" />
+        </h3>
+        <p className="money plus">${income}</p>
       </Card>
       <Card>
-        <HTML value={"Expense"} Img={ExpenseImg} amount={0} />
+        <h3>
+          <span>Expense</span>
+          <img src={ExpenseImg} alt="Expense" />
+        </h3>
+        <p className="money minus">${expense}</p>
       </Card>
       <Card>
-        <HTML value={"Your balance"} Img={TotalImg} amount={0} />
+        <h3>
+          <span>Your Balance</span>
+          <img src={TotalImg} alt="Total" />
+        </h3>
+        <p>${total}</p>
       </Card>
     </BalanceContainer>
   );

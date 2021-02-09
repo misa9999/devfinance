@@ -6,14 +6,14 @@ const initialState = {
   transactions: [
     {
       id: 1,
-      description: "Energy",
-      amount: -50000,
+      description: "Payment",
+      amount: 1000,
       date: "23/01/2021",
     },
     {
       id: 2,
-      description: "Website",
-      amount: 500000,
+      description: "Book",
+      amount: -50,
       date: "23/01/2021",
     },
   ],
@@ -29,7 +29,7 @@ export const GlobalProvider = ({ children }) => {
   // Actions
 
   return (
-    <GlobalContext.Provider value={{ transactions: state.trasactions }}>
+    <GlobalContext.Provider value={{ transactions: state.transactions }}>
       {children}
     </GlobalContext.Provider>
   );
