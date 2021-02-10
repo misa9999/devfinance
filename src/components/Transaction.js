@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import styled from "styled-components";
 import MinusImg from "../assets/images/minus.svg";
 
 import { GlobalContext } from "../context/GlobalState";
@@ -20,6 +19,8 @@ export const Transaction = ({ transaction }) => {
     return sign + value;
   };
 
+  const { deleteTransaction } = useContext(GlobalContext);
+
   return (
     <tr>
       <td className="description">{transaction.description}</td>
@@ -28,7 +29,10 @@ export const Transaction = ({ transaction }) => {
       </td>
       <td>{transaction.date}</td>
       <td>
-        <button className="delete-btn">
+        <button
+          onClick={() => deleteTransaction(transaction.id)}
+          className="delete-btn"
+        >
           <img src={MinusImg} alt="Minus" />
         </button>
       </td>
