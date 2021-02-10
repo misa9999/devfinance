@@ -1,4 +1,6 @@
-import { useRef } from "react";
+import { useState, useContext, useRef } from "react";
+
+import { GlobalContext } from "../context/GlobalState";
 
 import styled from "styled-components";
 
@@ -85,38 +87,56 @@ export const Modal = ({ showModal, setShowModal }) => {
     setShowModal((prev) => !prev);
   };
 
+  const [description, setDescription] = useState("");
+  const [amount, setAmount] = useState(0);
+  const [date, setDate] = useState("");
+
+  const { addTransaction } = useContext(GlobalContext);
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    const newTransaction = {
+      id: Math.floor(Math.random() * 100000000),
+      description,
+      amount: +amount,
+      date,
+    };
+
+    addTransaction(newTransaction);
+  };
+
   return (
     <>
       {showModal ? (
         <Background ref={modalRef} onClick={closeModal}>
           <ModalContent>
             <h2>New Transaction</h2>
-            <form>
+            <form onSubmit={onSubmit}>
               <InputWrapper>
                 <label className="sr-only" htmlFor="description">
                   Description
                 </label>
                 <Input
                   type="text"
-                  id="description"
-                  name="description"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
                   placeholder="description"
                 />
               </InputWrapper>
+
               <InputWrapper>
                 <label className="sr-only" htmlFor="amount">
                   Value
                 </label>
                 <Input
                   type="number"
-                  step="0.01"
-                  id="amount"
-                  name="amount"
+                  value={amount}
+                  onChange={(e) => setAmount(e.target.value)}
                   placeholder="0,00"
                 />
                 <small className="help">
-                  Use the sign - (negative) for expense and , (comma) for
-                  decimal place.
+                  (negative - expense, positive - income)
                 </small>
               </InputWrapper>
 
@@ -124,14 +144,18 @@ export const Modal = ({ showModal, setShowModal }) => {
                 <label className="sr-only" htmlFor="date">
                   Date
                 </label>
-                <Input type="date" id="date" name="date" />
+                <Input
+                  type="date"
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
+                />
               </InputWrapper>
 
               <InputWrapper>
                 <Button type="button" onClick={openModal}>
                   Cancel
                 </Button>
-                <Button type="submit">Save</Button>
+                <Button>Save</Button>
               </InputWrapper>
             </form>
           </ModalContent>
