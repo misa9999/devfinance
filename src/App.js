@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { Header } from "./components/Header";
 import { Balance } from "./components/Balance";
 import { TransactionList } from "./components/TransactionList";
+import { Modal } from "./components/Modal";
 
 import { GlobalStyle } from "./GlobalStyle";
 
@@ -25,6 +26,7 @@ function App() {
         <Balance />
         <TransactionList setShowModal={setShowModal} />
       </Container>
+      <Modal showModal={showModal} setShowModal={setShowModal} />
       <GlobalStyle />
     </GlobalProvider>
   );
