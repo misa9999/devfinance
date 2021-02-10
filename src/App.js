@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import { Header } from "./components/Header";
 import { Balance } from "./components/Balance";
-import { Transaction } from "./components/TransactionList";
+import { TransactionList } from "./components/TransactionList";
 
 import { GlobalStyle } from "./GlobalStyle";
 
@@ -23,7 +23,7 @@ function App() {
       <Header />
       <Container>
         <Balance />
-        <Transaction setShowModal={setShowModal} />
+        <TransactionList setShowModal={setShowModal} />
       </Container>
       <GlobalStyle />
     </GlobalProvider>

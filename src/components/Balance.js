@@ -62,9 +62,9 @@ export const Balance = () => {
     .filter((item) => item > 0)
     .reduce((acc, item) => (acc += item), 0);
 
-  const expense = amounts
-    .filter((item) => item < 0)
-    .reduce((acc, item) => (acc += item), 0);
+  const expense =
+    amounts.filter((item) => item < 0).reduce((acc, item) => (acc += item), 0) *
+    -1;
 
   return (
     <BalanceContainer className="balance">
@@ -73,14 +73,14 @@ export const Balance = () => {
           <span>Income</span>
           <img src={IncomeImg} alt="Income" />
         </h3>
-        <p className="money plus">${income}</p>
+        <p className="money plus">+ ${income}</p>
       </Card>
       <Card>
         <h3>
           <span>Expense</span>
           <img src={ExpenseImg} alt="Expense" />
         </h3>
-        <p className="money minus">${expense}</p>
+        <p className="money minus">- ${expense}</p>
       </Card>
       <Card>
         <h3>
