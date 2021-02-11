@@ -1,8 +1,8 @@
-import { useState, useContext, useRef } from "react";
+import { useState, useContext, useRef } from 'react';
 
-import { GlobalContext } from "../context/GlobalState";
+import { GlobalContext } from '../context/GlobalState';
 
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Background = styled.div`
   width: 100%;
@@ -87,9 +87,9 @@ export const Modal = ({ showModal, setShowModal }) => {
     setShowModal((prev) => !prev);
   };
 
-  const [description, setDescription] = useState("");
+  const [description, setDescription] = useState('');
   const [amount, setAmount] = useState(0);
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState('');
 
   const { addTransaction } = useContext(GlobalContext);
 
@@ -104,6 +104,7 @@ export const Modal = ({ showModal, setShowModal }) => {
     };
 
     addTransaction(newTransaction);
+    openModal();
   };
 
   return (
