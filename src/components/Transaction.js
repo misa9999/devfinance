@@ -23,7 +23,9 @@ export const Transaction = ({ transaction }) => {
   const dateFormatter = (date) => {
     const splittedDate = date.split('-');
 
-    return `${splittedDate[1]}/${splittedDate[2]}/${splittedDate[0]}`;
+    return date.length
+      ? `${splittedDate[1]}/${splittedDate[2]}/${splittedDate[0]}`
+      : '';
   };
 
   const { deleteTransaction } = useContext(GlobalContext);
