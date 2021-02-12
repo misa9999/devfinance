@@ -1,9 +1,9 @@
-import { useContext } from "react";
-import styled from "styled-components";
+import { useContext } from 'react';
+import styled from 'styled-components';
 
-import { Transaction } from "../components/Transaction";
+import { Transaction } from '../components/Transaction';
 
-import { GlobalContext } from "../context/GlobalState";
+import { GlobalContext } from '../context/GlobalState';
 
 const TransactionContainer = styled.section`
   display: block;
@@ -94,7 +94,6 @@ export const TransactionList = ({ setShowModal }) => {
       <button className="button new" onClick={openModal}>
         + New Transaction
       </button>
-      <h3>History</h3>
       <Table>
         <thead>
           <tr>
