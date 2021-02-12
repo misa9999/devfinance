@@ -4,7 +4,7 @@ import MinusImg from '../assets/images/minus.svg';
 import { GlobalContext } from '../context/GlobalState';
 
 export const Transaction = ({ transaction }) => {
-  //Money formatter
+  // money formatter
   const moneyFormatter = (value) => {
     const sign = Number(value) < 0 ? '-' : '';
 
@@ -19,6 +19,7 @@ export const Transaction = ({ transaction }) => {
     return sign + value;
   };
 
+  // date formatter
   const dateFormatter = (date) => {
     const splittedDate = date.split('-');
 
