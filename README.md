@@ -55,8 +55,8 @@
 
 ## 💻 Project
 
-This application was built in the Rocketseat event, and this project consists of you managing your finances. In the event was used Javascript, HTML and CSS,
-but I wanted to take it to the next level and I used this project to apply my knowledge in ReactJS!
+This application was built in the Rocketseat event, and this project consists in managing your finances. I worked with Javascript, HTML and CSS,
+but I wanted to take it to the a next level, so I used this project to apply my knowledge in ReactJS!
 
 ---
 
